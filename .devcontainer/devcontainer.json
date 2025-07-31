@@ -77,6 +77,6 @@
 		// See: https://github.com/devcontainers/spec/issues/132
 		"source=${localEnv:HOME},target=/mnt/home/coder,type=bind,readonly"
 	],
-	"postCreateCommand": ["./.devcontainer/scripts/post_create.sh"],
-	"postStartCommand": ["./.devcontainer/scripts/post_start.sh"]
+    "postCreateCommand": "chmod +x ./.devcontainer/scripts/post_create.sh && ./.devcontainer/scripts/post_create.sh",
+	"postStartCommand": "chmod +x ./.devcontainer/scripts/post_start.sh && ./.devcontainer/scripts/post_start.sh"
 }

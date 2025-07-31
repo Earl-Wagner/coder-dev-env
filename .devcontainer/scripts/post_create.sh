@@ -1,7 +1,16 @@
 #!/bin/sh
 
 install_devcontainer_cli() {
-	npm install -g @devcontainers/cli
+    echo "🔧 Configuring npm for user installation..."
+    # Set npm prefix to user's home directory to avoid permission issues
+    npm config set prefix '~/.npm-global'
+    # Add npm global bin to PATH
+    echo 'export PATH="$HOME/.npm-global/bin:$PATH"' >> ~/.bashrc # For bash users
+    echo 'export PATH="$HOME/.npm-global/bin:$PATH"' >> ~/.zshrc # For zsh users (if applicable)
+    export PATH="$HOME/.npm-global/bin:$PATH" # Apply to current session
+
+    echo "Installing @devcontainers/cli using npm..."
+    npm install -g @devcontainers/cli
 }
 
 install_ssh_config() {
