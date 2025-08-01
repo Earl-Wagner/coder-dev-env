@@ -1,6 +1,6 @@
 {
 	"name": "Coder",
-	"image": "codercom/enterprise-node:ubuntu",
+	"image": "codercom/enterprise-node:latest",
 	"features": {
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {
 			"moby": "false"
@@ -75,7 +75,8 @@
 		"source=coder-coder-devcontainer-home,target=/home/coder,type=volume",
 		// Mount the entire home because conditional mounts are not supported.
 		// See: https://github.com/devcontainers/spec/issues/132
-		"source=${localEnv:HOME},target=/mnt/home/coder,type=bind,readonly"
+		"source=${localEnv:HOME},target=/mnt/home/coder,type=bind,readonly",
+		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
 	],
     "postCreateCommand": "chmod +x ./.devcontainer/scripts/post_create.sh && ./.devcontainer/scripts/post_create.sh",
 	"postStartCommand": "chmod +x ./.devcontainer/scripts/post_start.sh && ./.devcontainer/scripts/post_start.sh"
